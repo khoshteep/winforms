@@ -11457,6 +11457,13 @@ namespace System.Windows.Forms
                 // Cleanup any font handle wrapper...
                 DisposeFontHandle();
 
+                if (DpiHelper.IsPerMonitorV2Awareness)
+                {
+                    // Reset the ScaledControlFont value when the font is being set explicitly, in order to keep it
+                    // in sync when the application is moved between monitors with different Dpi settings.
+                    ScaledControlFont = null;
+                }
+
                 if (Properties.ContainsInteger(s_fontHeightProperty))
                 {
                     Properties.SetInteger(s_fontHeightProperty, (font is null) ? -1 : font.Height);
