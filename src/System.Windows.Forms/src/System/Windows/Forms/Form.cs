@@ -1447,7 +1447,7 @@ namespace System.Windows.Forms
                             Location.Y,
                             Size.Width,
                             Size.Height,
-                            User32.SWP.NOZORDER);
+                            User32.SWP.NOZORDER | User32.SWP.NOACTIVATE);
                     }
 
                     OnMinimumSizeChanged(EventArgs.Empty);
